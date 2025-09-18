@@ -112,27 +112,27 @@ export default function Diagram() {
         </div>
 
         <Lane title="">
-          <Node title="VS Code: модуль GigaCode — opensource и др." subtitle="" icon={Code} showDescriptions={showDescriptions}>
+          <Node title="VS Code: модуль GigaCode — open source и др." subtitle="" icon={Code} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Промпт вводится прямо в модуле (IDE).</li>
               <li>Модуль формирует запрос для агента.</li>
-              <li>Интеграции: opensource и др.</li>
+              <li>Интеграции: open source и др.</li>
             </ul>
           </Node>
           <Arrow label="prompt →" />
-          <Node title="Агент GigaCode — opensource и др." subtitle="" icon={Cpu} showDescriptions={showDescriptions}>
+          <Node title="Агент GigaCode — open source и др." subtitle="" icon={Cpu} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Передача запроса к модели, управление контекстом.</li>
               <li>Безопасность и логгирование вызовов.</li>
-              <li>Интеграции: opensource и др.</li>
+              <li>Интеграции: open source и др.</li>
             </ul>
           </Node>
           <Arrow label="request" />
-          <Node title="Локальная модель: GigaCode, Cotype — opensource и др." subtitle="" icon={Bot} showDescriptions={showDescriptions}>
+          <Node title="Локальная модель: GigaCode, Cotype — open source и др." subtitle="" icon={Bot} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Одновременная генерация: код + манифест.</li>
               <li>Возврат результата агенту.</li>
-              <li>Опции моделей: GigaCode, Cotype; opensource и др.</li>
+              <li>Опции моделей: GigaCode, Cotype; open source и др.</li>
             </ul>
           </Node>
           <Arrow label="response" />
@@ -161,11 +161,11 @@ export default function Diagram() {
             </ul>
           </Node>
           <Arrow label="commit/push" />
-          <Node title="VCS: GitFlic (локальный) — opensource и др." subtitle="" icon={GitBranch} showDescriptions={showDescriptions}>
+          <Node title="VCS: GitFlic (локальный) — open source и др." subtitle="" icon={GitBranch} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Commit & Push из IDE.</li>
               <li>MR и ревью изменений.</li>
-              <li>Интеграции: opensource и др.</li>
+              <li>Интеграции: open source и др.</li>
             </ul>
           </Node>
         </Lane>
