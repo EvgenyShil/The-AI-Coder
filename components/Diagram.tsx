@@ -6,11 +6,7 @@ function Node({ title, subtitle, icon: Icon, accent = "", children, showDescript
   const [open, setOpen] = useState(true);
   const canShow = showDescriptions && open;
   return (
-   <div
-  data-testid="node"
-  className={`relative rounded-2xl shadow-lg border bg-white ${accent} p-4`}
-  style={{ width: 340 }}
->
+    <div data-testid="node" className={'relative rounded-2xl shadow-lg border bg-white ' + accent + ' p-4'} style={{ width: 340 }}>
       <div className="flex items-center gap-3">
         <div className="p-2 rounded-xl border bg-gray-50">
           <Icon className="w-5 h-5" />
@@ -25,14 +21,14 @@ function Node({ title, subtitle, icon: Icon, accent = "", children, showDescript
             onClick={() => setOpen(v => !v)}
             className="text-xs underline text-gray-700 hover:text-gray-900"
             aria-expanded={open}
-            aria-controls={\`\${title}-desc\`}
+            aria-controls={title + '-desc'}
           >
             {open ? "Свернуть" : "Развернуть"}
           </button>
         ) : null}
       </div>
       {canShow ? (
-        <div id={\`\${title}-desc\`} className="mt-3 text-sm text-gray-700">
+        <div id={title + '-desc'} className="mt-3 text-sm text-gray-700">
           {children}
         </div>
       ) : null}
@@ -44,10 +40,7 @@ function SplitNode({ title, subtitle, left, right, showDescriptions = true }: an
   const [open, setOpen] = useState(true);
   const canShow = showDescriptions && open;
   return (
-    <div
-  className={`relative rounded-2xl shadow-lg border bg-white p-4`}
-  style={{ width: 520 }}
->
+    <div className={'relative rounded-2xl shadow-lg border bg-white p-4'} style={{ width: 520 }}>
       <div className="flex items-center justify-between gap-3">
         <div>
           <div className="text-sm text-gray-500">{subtitle}</div>
@@ -85,7 +78,7 @@ function SplitNode({ title, subtitle, left, right, showDescriptions = true }: an
 
 function Arrow({ label }: { label?: string }) {
   return (
-    <div className="flex items-center gap-2" aria-label={label ? \`arrow:\${label}\` : "arrow"}>
+    <div className="flex items-center gap-2" aria-label={label ? `arrow:${label}` : "arrow"}>
       {label ? <div className="text-xs text-gray-600 whitespace-nowrap">{label}</div> : null}
       <ArrowRight className="w-6 h-6" />
     </div>
@@ -237,19 +230,19 @@ export default function Diagram() {
       <div className="max-w-[1400px] mx-auto space-y-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold leading-tight">ИИ‑программист: разработка</h1>
+            <h1 className="text-3xl font-bold leading-tight">ИИ-программист: разработка</h1>
             <p className="text-gray-600">Выберите вариант: прямой промпт → модель (В1) или промпт через модуль/агент (В2).</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 border rounded-xl px-2 py-1 bg-white">
               <Layers className="w-4 h-4" />
               <button
-                className={`text-sm px-2 py-1 rounded-lg \${variant==='v1' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}\`}
+                className={`text-sm px-2 py-1 rounded-lg ${variant==='v1' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`}
                 onClick={() => setVariant('v1')}
                 aria-pressed={variant==='v1'}
               >Вариант 1</button>
               <button
-                className={`text-sm px-2 py-1 rounded-lg \${variant==='v2' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}\`}
+                className={`text-sm px-2 py-1 rounded-lg ${variant==='v2' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`}
                 onClick={() => setVariant('v2')}
                 aria-pressed={variant==='v2'}
               >Вариант 2</button>
