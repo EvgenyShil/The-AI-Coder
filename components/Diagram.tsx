@@ -94,7 +94,7 @@ function Lane({ title, children }: any) {
   );
 }
 
-// --- Single variant -------------------------------------------
+// --- Single variant (Вариант 2) -------------------------------------------
 export default function Diagram() {
   const [showDescriptions, setShowDescriptions] = useState(true);
 
@@ -103,16 +103,16 @@ export default function Diagram() {
       <div className="max-w-[1400px] mx-auto space-y-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold leading-tight">ИИ‑программист: разработка</h1>
-            
+            <h1 className="text-3xl font-bold leading-tight">ИИ‑программист: разработка (Вариант 2)</h1>
+            <p className="text-gray-600">Промпт в модуле VS Code → Агент GigaCode → Локальная модель → Генерация артефактов → Commit/Push в GitFlic.</p>
           </div>
           <label className="flex items-center gap-2 text-sm">
             <input data-testid="toggle-descriptions" type="checkbox" checked={showDescriptions} onChange={() => setShowDescriptions(v => !v)} /> Описание
           </label>
         </div>
 
-        <Lane title="Разработка">
-          <Node title="VS Code: модуль GigaCode" subtitle="opensource и др." icon={Code} showDescriptions={showDescriptions}>
+        <Lane title="Разработка (Вариант 2)">
+          <Node title="VS Code: модуль GigaCode — opensource и др." subtitle="" icon={Code} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Промпт вводится прямо в модуле (IDE).</li>
               <li>Модуль формирует запрос для агента.</li>
@@ -120,7 +120,7 @@ export default function Diagram() {
             </ul>
           </Node>
           <Arrow label="prompt →" />
-          <Node title="Агент GigaCode" subtitle="opensource и др." icon={Cpu} showDescriptions={showDescriptions}>
+          <Node title="Агент GigaCode — opensource и др." subtitle="" icon={Cpu} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Передача запроса к модели, управление контекстом.</li>
               <li>Безопасность и логгирование вызовов.</li>
@@ -128,7 +128,7 @@ export default function Diagram() {
             </ul>
           </Node>
           <Arrow label="request" />
-          <Node title="Локальная модель: GigaCode, Cotype" subtitle="opensource и др." icon={Bot} showDescriptions={showDescriptions}>
+          <Node title="Локальная модель: GigaCode, Cotype — opensource и др." subtitle="" icon={Bot} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Одновременная генерация: код + манифест.</li>
               <li>Возврат результата агенту.</li>
@@ -161,7 +161,7 @@ export default function Diagram() {
             </ul>
           </Node>
           <Arrow label="commit/push" />
-          <Node title="GitFlic (локальный)" subtitle="VCS · opensource и др." icon={GitBranch} showDescriptions={showDescriptions}>
+          <Node title="VCS: GitFlic (локальный) — opensource и др." subtitle="" icon={GitBranch} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Commit & Push из IDE.</li>
               <li>MR и ревью изменений.</li>
