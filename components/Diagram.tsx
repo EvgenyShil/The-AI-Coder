@@ -94,7 +94,7 @@ function Lane({ title, children }: any) {
   );
 }
 
-// --- Single variant (Вариант 2) -------------------------------------------
+// --- Single variant -------------------------------------------
 export default function Diagram() {
   const [showDescriptions, setShowDescriptions] = useState(true);
 
@@ -103,15 +103,15 @@ export default function Diagram() {
       <div className="max-w-[1400px] mx-auto space-y-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold leading-tight">ИИ‑программист: разработка (Вариант 2)</h1>
-            <p className="text-gray-600">Промпт в модуле VS Code → Агент GigaCode → Локальная модель → Генерация артефактов → Commit/Push в GitFlic.</p>
+            <h1 className="text-3xl font-bold leading-tight">ИИ‑программист: разработка</h1>
+            
           </div>
           <label className="flex items-center gap-2 text-sm">
             <input data-testid="toggle-descriptions" type="checkbox" checked={showDescriptions} onChange={() => setShowDescriptions(v => !v)} /> Описание
           </label>
         </div>
 
-        <Lane title="Разработка (Вариант 2)">
+        <Lane title="Разработка">
           <Node title="VS Code: модуль GigaCode" subtitle="opensource и др." icon={Code} showDescriptions={showDescriptions}>
             <ul className="list-disc ml-4 mt-2">
               <li>Промпт вводится прямо в модуле (IDE).</li>
