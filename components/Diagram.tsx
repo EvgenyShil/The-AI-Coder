@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Cpu, Bot, Code, GitBranch, ArrowRight, MessageSquare, FileCode2, Layers } from "lucide-react";
+import { Cpu, Bot, Code, GitBranch, ArrowRight, FileCode2 } from "lucide-react";
 
 // --- UI building blocks -----------------------------------------------------
 function Node({ title, subtitle, icon: Icon, accent = "", children, showDescriptions = true }: any) {
@@ -94,79 +94,16 @@ function Lane({ title, children }: any) {
   );
 }
 
-// --- Variant 1 --------------------------------------------------------------
-function Variant1({ showDescriptions }: { showDescriptions: boolean }) {
+// --- Scenario --------------------------------------------------------------
+function Scenario({ showDescriptions }: { showDescriptions: boolean }) {
   return (
     <>
-      <Lane title="Разработка (Вариант 1)">
-        <Node title="Ввод промпта" subtitle="Задача/контекст" icon={MessageSquare} showDescriptions={showDescriptions}>
-          <ul className="list-disc ml-4 mt-2">
-            <li><strong>Задача</strong>: формулируем что нужно сделать и критерии готовности.</li>
-            <li><strong>Уточнение</strong>: детали, ограничения, параметры (язык, фреймворк, порт).</li>
-            <li><strong>Предустановка</strong>: промпт «нужно написать манифест» с шаблоном.</li>
-            <li><strong>Контекст</strong>: ссылки на репозиторий, API, примеры.</li>
-          </ul>
-        </Node>
-        <Arrow label="prompt" />
-        <Node title="GigaCode" subtitle="Локальная модель" icon={Bot} showDescriptions={showDescriptions}>
-          <ul className="list-disc ml-4 mt-2">
-            <li>Одновременная генерация артефактов: код + манифест.</li>
-            <li>Ассистирование: подсказки, дополнения.</li>
-          </ul>
-        </Node>
-        <Arrow label="artifacts" />
-        <SplitNode
-          title="Генерация артефактов"
-          subtitle="Код + Манифест"
-          showDescriptions={showDescriptions}
-          left={
-            <ul className="list-disc ml-4 mt-2">
-              <li>Исходники приложения, конфигурация.</li>
-              <li>При необходимости — тестовые заготовки.</li>
-            </ul>
-          }
-          right={
-            <ul className="list-disc ml-4 mt-2">
-              <li>Deployment/Service/Ingress шаблоны.</li>
-              <li>Параметры: образ, теги, env, порты, реплики.</li>
-            </ul>
-          }
-        />
-        <Arrow label="интеграция" />
-        <Node title="Модуль и агент GigaCode" subtitle="Интеграция" icon={Cpu} showDescriptions={showDescriptions}>
-          <ul className="list-disc ml-4 mt-2">
-            <li>Связь с IDE (VS Code).</li>
-            <li>Работа с репозиторием: commit → push → MR в GitFlic.</li>
-          </ul>
-        </Node>
-        <Arrow label="редактирование/commit" />
-        <Node title="VS Code" subtitle="IDE" icon={Code} showDescriptions={showDescriptions}>
-          <ul className="list-disc ml-4 mt-2">
-            <li>Правки артефактов (код + манифест).</li>
-            <li>Commit & Push.</li>
-          </ul>
-        </Node>
-        <Arrow label="push" />
-        <Node title="GitFlic (локальный)" subtitle="VCS" icon={GitBranch} showDescriptions={showDescriptions}>
-          <ul className="list-disc ml-4 mt-2">
-            <li>Хранение кода и манифестов.</li>
-            <li>Merge Request и ревью.</li>
-          </ul>
-        </Node>
-      </Lane>
-    </>
-  );
-}
-
-// --- Variant 2 --------------------------------------------------------------
-function Variant2({ showDescriptions }: { showDescriptions: boolean }) {
-  return (
-    <>
-      <Lane title="Разработка (Вариант 2)">
-        <Node title="VS Code: модуль" subtitle="Ввод промпта" icon={Code} showDescriptions={showDescriptions}>
+      <Lane title="Разработка">
+        <Node title="VS Code: модуль GigaCode" subtitle="Ввод промпта" icon={Code} showDescriptions={showDescriptions}>
           <ul className="list-disc ml-4 mt-2">
             <li>Промпт вводится прямо в модуле (IDE).</li>
             <li>Модуль формирует запрос для агента.</li>
+            <li>Доступен в opensorse и ДР.</li>
           </ul>
         </Node>
         <Arrow label="prompt →" />
@@ -174,13 +111,15 @@ function Variant2({ showDescriptions }: { showDescriptions: boolean }) {
           <ul className="list-disc ml-4 mt-2">
             <li>Передача запроса к модели, управление контекстом.</li>
             <li>Безопасность и логгирование вызовов.</li>
+            <li>Доступен в opensorse и ДР.</li>
           </ul>
         </Node>
         <Arrow label="request" />
-        <Node title="GigaCode" subtitle="Локальная модель" icon={Bot} showDescriptions={showDescriptions}>
+        <Node title="GigaCode / Cotype" subtitle="Локальная модель" icon={Bot} showDescriptions={showDescriptions}>
           <ul className="list-disc ml-4 mt-2">
             <li>Одновременная генерация: код + манифест.</li>
             <li>Возврат результата агенту.</li>
+            <li>Доступна в opensorse и ДР.</li>
           </ul>
         </Node>
         <Arrow label="response" />
@@ -202,10 +141,11 @@ function Variant2({ showDescriptions }: { showDescriptions: boolean }) {
           }
         />
         <Arrow label="ответ в модуль" />
-        <Node title="VS Code: модуль" subtitle="Получение ответа" icon={Code} showDescriptions={showDescriptions}>
+        <Node title="VS Code: модуль GigaCode" subtitle="Получение ответа" icon={Code} showDescriptions={showDescriptions}>
           <ul className="list-disc ml-4 mt-2">
             <li>Вставка артефактов (код + манифест) в проект.</li>
             <li>Правки и подготовка commit.</li>
+            <li>Доступен в opensorse и ДР.</li>
           </ul>
         </Node>
         <Arrow label="commit/push" />
@@ -213,6 +153,7 @@ function Variant2({ showDescriptions }: { showDescriptions: boolean }) {
           <ul className="list-disc ml-4 mt-2">
             <li>Commit & Push из IDE.</li>
             <li>MR и ревью изменений.</li>
+            <li>Доступен в opensorse и ДР.</li>
           </ul>
         </Node>
       </Lane>
@@ -220,10 +161,9 @@ function Variant2({ showDescriptions }: { showDescriptions: boolean }) {
   );
 }
 
-// --- Main diagram with variant switch --------------------------------------
+// --- Main diagram -----------------------------------------------------------
 export default function Diagram() {
   const [showDescriptions, setShowDescriptions] = useState(true);
-  const [variant, setVariant] = useState<'v1' | 'v2'>('v1');
 
   return (
     <div data-testid="diagram-root" className="min-h-screen w-full p-6 md:p-10 bg-gradient-to-br from-gray-50 to-white text-gray-900">
@@ -231,29 +171,16 @@ export default function Diagram() {
         <div className="flex items-start justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold leading-tight">ИИ-программист: разработка</h1>
-            <p className="text-gray-600">Выберите вариант: прямой промпт → модель (В1) или промпт через модуль/агент (В2).</p>
+            <p className="text-gray-600">Сценарий с модулем VS Code, агентом и локальной моделью GigaCode/Cotype.</p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 border rounded-xl px-2 py-1 bg-white">
-              <Layers className="w-4 h-4" />
-              <button
-                className={`text-sm px-2 py-1 rounded-lg ${variant==='v1' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`}
-                onClick={() => setVariant('v1')}
-                aria-pressed={variant==='v1'}
-              >Вариант 1</button>
-              <button
-                className={`text-sm px-2 py-1 rounded-lg ${variant==='v2' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`}
-                onClick={() => setVariant('v2')}
-                aria-pressed={variant==='v2'}
-              >Вариант 2</button>
-            </div>
             <label className="flex items-center gap-2 text-sm">
               <input data-testid="toggle-descriptions" type="checkbox" checked={showDescriptions} onChange={() => setShowDescriptions(v => !v)} /> Описание
             </label>
           </div>
         </div>
 
-        {variant === 'v1' ? <Variant1 showDescriptions={showDescriptions} /> : <Variant2 showDescriptions={showDescriptions} />}
+        <Scenario showDescriptions={showDescriptions} />
       </div>
     </div>
   );
