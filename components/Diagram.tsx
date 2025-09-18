@@ -6,7 +6,7 @@ function Node({ title, subtitle, icon: Icon, accent = "", children, showDescript
   const [open, setOpen] = useState(true);
   const canShow = showDescriptions && open;
   return (
-    <div data-testid="node" className={\`relative rounded-2xl shadow-lg border bg-white \${accent} p-4 w-[340px]\`}>
+    <div data-testid="node" className={`relative rounded-2xl shadow-lg border bg-white \${accent} p-4 w-[340px]\`}>
       <div className="flex items-center gap-3">
         <div className="p-2 rounded-xl border bg-gray-50">
           <Icon className="w-5 h-5" />
@@ -40,7 +40,7 @@ function SplitNode({ title, subtitle, left, right, showDescriptions = true }: an
   const [open, setOpen] = useState(true);
   const canShow = showDescriptions && open;
   return (
-    <div className={\`relative rounded-2xl shadow-lg border bg-white p-4 w-[520px]\`}>
+    <div className={`relative rounded-2xl shadow-lg border bg-white p-4 w-[520px]\`}>
       <div className="flex items-center justify-between gap-3">
         <div>
           <div className="text-sm text-gray-500">{subtitle}</div>
@@ -237,12 +237,12 @@ export default function Diagram() {
             <div className="flex items-center gap-2 border rounded-xl px-2 py-1 bg-white">
               <Layers className="w-4 h-4" />
               <button
-                className={\`text-sm px-2 py-1 rounded-lg \${variant==='v1' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}\`}
+                className={`text-sm px-2 py-1 rounded-lg \${variant==='v1' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}\`}
                 onClick={() => setVariant('v1')}
                 aria-pressed={variant==='v1'}
               >Вариант 1</button>
               <button
-                className={\`text-sm px-2 py-1 rounded-lg \${variant==='v2' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}\`}
+                className={`text-sm px-2 py-1 rounded-lg \${variant==='v2' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}\`}
                 onClick={() => setVariant('v2')}
                 aria-pressed={variant==='v2'}
               >Вариант 2</button>
